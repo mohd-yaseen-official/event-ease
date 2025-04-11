@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block 'content' %}
+
+    <section id="event">
+        {% include "includes/header.html" %}
+
+        <div class="container py-5">
+
+            <h1 class="mb-4 text-center">Event Details</h1>
+
+            <div class="row">
+                <div class="col-12 mt-3 mx-auto p-4 bg-white border rounded">
+
+                    <h3 class="text-center mb-4">{{ event.title }}</h3>
+                    <p class="mb-3">{{ event.description }}</p>
+                    <h6 class="text-muted">
+                        Date And Time: <i>{{ event.date_and_time }}</i>
+                    </h6>
+                    <h6 class="text-muted">Location: <i>{{ event.venue }}</i></h6>
+                    <h6 class="text-muted">Type: <i>{{event.type.name}}</i></h6>
+
+                    <div class="action mt-4">
+
+                        <a href="{% url 'events:edit_event' event.pk %}" class="btn btn-success mt-2">
+                            <img src='{% static "icons/edit.svg" %}' alt="edit" class="">
+                        </a>
+
+                        <a href="{% url 'events:delete_event' event.pk %}" class="action-button btn btn-danger mt-2 " 
+                        data-text='Are you sure, You want to delete it...?'>
+                            <img src='{% static "icons/delete.svg" %}' alt="delete" class="">
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        {% include "includes/footer.html" %}
+        
+    </section>
+{% endblock %}

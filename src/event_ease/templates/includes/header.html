@@ -1,0 +1,78 @@
+{% load static %}
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-5 py-3">
+
+        <a class="navbar-brand" href='{% url "web:index" %}'>
+            <img src='{% static "images/logo.png" %}' alt="Logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link mr-lg-3 mb-3 text-dark" href="#" data-toggle='modal' data-target="#userProfile">{{customer.user.username}}</a>
+
+                        <div class="modal fade bg-dark" id="userProfile" tabindex="-1" role="dialog" aria-labelledby="userProfileTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="userProfileLongTitle">Profile</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>{{customer.name}}</h3>
+                                    <h6 class='text-muted'>Username: {{customer.user.username}}</h6>
+                                    <h6 class='text-muted'>Email: {{customer.user.email}}</h6>
+                                    <h6 class='text-muted'>Phone: {{customer.phone}}</h6>
+                                    
+                                    <h6 class='text-muted'>DOB: {{customer.date_of_birth|date:"d-m-Y"}}</h6>
+                                    <p>Address: {{customer.address}}</p>
+
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-secondary mr-lg-3  mb-3" href="{% url 'authentication:logout' %}">Logout</a>
+                    </li>
+
+                    {% if not title == 'My Events' %}
+                        <li class="nav-item">
+                            <a class="btn btn-secondary mr-lg-3  mb-3" href="{% url 'events:my_events'%}">My Events</a>
+                        </li>
+                    {% endif %}
+
+                    {% if not title == 'Add Event' %}
+                        <li class="nav-item">
+                            <a class="btn btn-secondary mr-lg-3  mb-3" href="{% url 'events:add_event' %}">Add Event</a>
+                        </li>
+                    {% endif %}
+
+                    {% if not title == 'Dashboard' %}
+                        <li class="nav-item">
+                            <a class="btn btn-secondary mr-lg-3  mb-3" href="{% url 'web:dashboard' %}">Dashboard</a>
+                        </li>
+                    {% endif %}
+
+                {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-secondary mr-lg-3  mb-3" href="{% url 'authentication:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-secondary mr-lg-3  mb-3" href="{% url 'authentication:create_user' %}">Signup</a>
+                    </li>
+                {% endif %}
+                
+            </ul>
+        </div> 
+    </nav>
+</header>

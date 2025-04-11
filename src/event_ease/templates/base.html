@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    {% load static %}
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>EventEase | {{title}}</title>
+
+        <link rel="icon" type="image/x-icon" href="{% static 'icons/favicon.ico' %}">
+
+        <!-- Jquery -->
+        <script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+
+        <!-- Popper -->
+        <script src="{% static 'js/popper.min.js' %}"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+        <!-- SweetAlert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/b8e4d06be7.js" crossorigin="anonymous"></script>
+        
+        <!-- General Styles -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="{% static 'js/script.js' %}"></script>
+
+    </head>
+    <body>
+        {% block 'content' %}
+        
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+
+<footer class="row border-top bg-light pt-4 text-center text-muted">
+    <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
+        <img
+            src="{% static 'images/logo.png' %}"
+            alt="Logo"
+            class="logo img-fluid mb-3"
+            
+        />
+        <p>
+            Plan and manage any event effortlessly with advanced filtering,
+            interactive scheduling, and seamless on-site management.
+        </p>
+    </div>
+
+    <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
+        <h5 class="text-uppercase">Social Media</h5>
+        <ul class="social-media list-unstyled d-flex flex-column justify-content-center">
+            <li class="mx-2">
+                <a class="text-muted" href="#!"
+                    ><i class="fa-brands fa-facebook"></i
+                ></a>
+            </li>
+            <li class="mx-2">
+                <a class="text-muted" href="#!"
+                    ><i class="fa-brands fa-instagram"></i
+                ></a>
+            </li>
+            <li class="mx-2">
+                <a class="text-muted" href="#!"
+                    ><i class="fa-brands fa-x-twitter"></i
+                ></a>
+            </li>
+            <li class="mx-2">
+                <a class="text-muted" href="#!"
+                    ><i class="fa-brands fa-github"></i
+                ></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-4 col-sm-12">
+        <h5 class="text-uppercase">Important Links</h5>
+        <ul class="links list-unstyled">
+            <li>
+                <a class="text-muted" href='{% url "web:index" %}'>Home</a>
+            </li>
+            <li>
+                <a class="text-muted" href='{% url "authentication:login" %}'>Login</a>
+            </li>
+            <li>
+                <a class="text-muted" href='{% url "authentication:create_user" %}'>Sign Up</a>
+            </li>
+            <li>
+                <a class="text-muted" href='{% url "web:dashboard" %}'>Dashboard</a>
+            </li>
+            <li>
+                <a class="text-muted" href='{% url "events:my_events" %}'>All Events</a>
+            </li>
+        </ul>
+    </div>
+
+    <div
+        class="col-12 text-center p-4 bg-white"
+        
+    >
+        © 2021 Copyright:
+        <a class="text-muted fw-bold" href="https://mdbootstrap.com/"
+            >MDBootstrap.com</a
+        >
+    </div>
+</footer>

@@ -1,0 +1,35 @@
+{% extends "authentication/auth-base.html" %}
+{% load static %}
+{% block authentication %}
+    <form method='POST' action='' class='{% if page_id == "signup_customer" %}ajax{% endif %}'>
+
+        {% csrf_token %}
+
+        {% for field in form %}
+
+            <div class='form-group'>
+                <label for='{{field.id_for_label}}'>{{field.label}}</label>
+                {{ field }}
+            </div>
+            
+        {% endfor %}
+
+        <div class="form-group d-flex flex-column">
+
+            {% if error %}
+                <p class="form-text text-center text-danger">{{ message }}</p>
+            {% endif %}
+            
+            {% if page_id == 'signup_user' %}
+                <button type="submit" class='btn btn-success align-self-end'>Next</button>
+            {% elif page_id == 'signup_customer' %}
+                <button type="submit" class='btn btn-success'>Submit</button>
+            {% endif %}
+
+            
+        </div>
+
+        <a href="{% url 'authentication:login' %}" class='d-block text-center'>Already have an account ? Login</a>
+        
+    </form>
+{% endblock authentication %}

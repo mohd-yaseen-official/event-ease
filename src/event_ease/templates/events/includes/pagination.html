@@ -1,0 +1,76 @@
+{% load static %}
+{% load paginator_tags %}
+
+{% if paginator_instance.has_other_pages %}
+
+    <div class="pagination">
+        
+        {% if paginator_instance.has_previous %}
+
+            <a href="{% change_params paginator_instance.previous_page_number %}" class="prev">
+                <span class="arrow">
+                    <img
+                        src="{% static 'icons/arrow.svg' %}"
+                        alt="Arrow"
+                    />
+                </span>
+                Previous
+            </a>
+
+        {% else %}
+            <div class="prev disabled">
+                <span class="arrow">
+                    <img
+                        src="{% static 'icons/arrow.svg' %}"
+                        alt="Arrow"
+                    />
+                </span>
+                Previous
+            </div>
+        {% endif %}
+    
+        <div class="pages">
+            
+            {% get_elided_page_range paginator_instance.paginator paginator_instance.number 2 as elided_page_range%}
+            
+            {% for pg in elided_page_range %}
+
+                {% if paginator_instance.number == pg %}
+                    <span class="active"> {{pg}} </span>
+                {% else %}
+                    {% change_params pg as current_url %}
+                    <a href="{{ current_url }}"> {{pg}} </a>
+                {% endif %}
+                    
+            {% endfor %}
+            
+        </div>
+
+        {% if paginator_instance.has_next %}
+
+            <a href="{% change_params paginator_instance.next_page_number %}" class="next">
+                Next
+                <span class="arrow">
+                    <img
+                        src="{% static 'icons/arrow.svg' %}"
+                        alt="Arrow"
+                    />
+                </span>
+
+            </a>
+        {% else %}
+
+            <div class="next disabled">
+                Next
+                <span class="arrow">
+                    <img
+                        src="{% static 'icons/arrow.svg' %}"
+                        alt="Arrow"
+                    />
+                </span>
+            </div>
+
+        {% endif %}
+
+    </div>
+{% endif %}

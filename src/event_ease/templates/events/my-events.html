@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load static %}
+{% load paginator_tags %}
+
+{% block 'content' %}
+
+    <section id="my-events">
+        {% include "includes/header.html" %}
+
+        <div class="container py-5">
+
+            <h1 class='mb-4 text-center'>All Events</h1>
+
+            <div class="row flex-column-reverse flex-sm-row">
+                
+                <div class="col-12 col-sm" id="events">
+
+                    {% if paginator_instance.object_list %}
+
+                        {% for event in paginator_instance %}
+                    
+                            <div class="col mb-5">
+
+                                <div class="card border-dark rounded">
+                                    
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">{{event.title}}</h5>
+                                        <p class="card-text">{{event.description|truncatewords:25}}</p>
+
+                                        <h6 class='text-muted'>Date & Time: <i class='font-italic'>{{event.date_and_time}}</i></h6>
+                                        <h6 class='text-muted'>Venue: <i class='font-italic'>{{event.venue}}</i></h6>
+
+                                        <div class="actions mb-2">
+                                            <a href="{% url 'events:view_event' event.pk %}" class="btn btn-primary mt-2">Details</a>
+
+                                            <a href="{% url 'events:edit_event' event.pk %}" class="btn btn-success mt-2">
+                                                <img src='{% static "icons/edit.svg" %}' alt="edit" class="img-fluid">
+                                            </a>
+
+                                            <a href="{% url 'events:delete_event' event.pk %}" class="action-button btn btn-danger mt-2 " data-text='Are you sure, You want to delete it...?
+                                            '>
+                                                <img src='{% static "icons/delete.svg" %}' alt="delete" class="img-fluid">
+                                            </a>
+
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                    {% else %}
+                        <div class="col-12 text-center">
+                            <h4 class='text-muted'>No Events Found...</h4>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+                
+                <div class="col-12 col-sm-3">
+
+                    <div class='col-12 py-3' id='filter'>
+
+                            <h2 class='text-center mb-3'>Filter</h2>
+
+                            <form action="" class='d-flex flex-column'>
+
+                                <input type="text" name="q" placeholder="Search anything..." class='form-control'/>
+                                
+                                <div class="datetime-filters mt-3">
+
+                                    <h5 class="form-text text-center mb-3">Date & Time</h5>
+                                    
+                                        <div class="form-group row d-flex align-items-center ">
+                                            <div class="col-2">
+                                                <input type="radio" value='1' name="date_and_time" class='form-control'/>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-check-label h6">Today</label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="form-group row d-flex align-items-center">
+                                            <div class="col-2">
+                                                <input type="radio" value='2' name="date_and_time" class='form-control'/>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-check-label h6">This Month</label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="form-group row d-flex align-items-center">
+                                            <div class="col-2">
+                                                <input type="radio" value='3' name="date_and_time" class='form-control'/>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-check-label h6">This Year</label>
+                                            </div>
+                                            
+                                        </div>
+                                    
+                                </div>
+
+                                <div class="event_type-filters mt-3">
+
+                                    <h5 class="form-text text-center mb-3">Event Types</h5>
+
+                                    {% for event_type in event_types %}
+                                        <div class="form-group row d-flex align-items-center">
+                                            <div class="col-2">
+                                                <input type="checkbox" value={{event_type.id}} name="type" class='form-control form-check'/>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-check-label h6">{{event_type.name}}</label>
+                                            </div>
+                                            
+                                        </div>
+                                    {% endfor %}
+                                </div>  
+                                
+                                <input type="submit" value="Filter" class='btn btn-success mt-3'/>
+                                
+                            </form>
+
+                            <button id='clear_filter' class='btn btn-danger d-block mt-3 mx-auto' onclick="clearQueryExceptPage()">Clear Filters</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% load_pagination paginator_instance %}
+
+            </div>
+        </div>
+        
+    {% include "includes/footer.html" %}
+
+    </section>
+{% endblock %}

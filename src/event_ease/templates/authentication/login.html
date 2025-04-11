@@ -1,0 +1,36 @@
+{% extends "authentication/auth-base.html" %}
+{% load static %}
+
+{% block authentication %}
+
+    <img src="{% static 'icons/user.svg' %}" alt="User" class='d-block m-auto'>
+    <hr class="line">
+
+    <h3 class='h1 text-center'>Welcome Back</h3>
+
+    <form action="" method="POST" class='d-flex flex-column align-items-center'>
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="id_username" class='d-block'> Username: </label>
+            <input id="id_username" name="username" type="text" class='form-control'/>
+        </div>
+
+        <div class="form-group">
+            <label for="id_password" class='d-block'> Password: </label>
+            <input id="id_password" name="password" type="password" class='form-control'/>
+        </div>
+    
+        <div class="form-group text-center">
+            {% if error %}
+                <p class="form-text text-danger">{{ message }}</p>
+            {% endif %}
+            
+            <button type="submit" class='btn btn-success'>Log in</button>
+
+        </div>
+
+        <a href="{% url "authentication:create_user" %}">Don't have an Account? Register</a>
+
+    </form>
+{% endblock authentication %}

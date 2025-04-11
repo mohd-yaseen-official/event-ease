@@ -1,0 +1,190 @@
+body, section {
+    overflow-x: hidden !important;
+}
+
+
+header nav.navbar ul li a {
+    font-weight: 600;
+}
+header nav.navbar ul li button,
+header nav.navbar ul li a {
+    font-size: 18px !important;
+}
+header nav.navbar a.navbar-brand img {
+    height: 50px;
+}
+
+
+ul.errorlist {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+ul.errorlist li {
+    color: red;
+}
+
+
+div.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #f5f5f5;
+    padding-top: 20px;
+}
+div.pagination a.prev {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #5e5e5e;
+    font-weight: 700;
+}
+div.pagination a.prev span,
+div.pagination .disabled.prev span {
+    transform: rotate(90deg);
+    margin-right: 10px;
+    width: 15px;
+}
+div.pagination a.next,
+div.pagination .disabled {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #5e5e5e;
+}
+div.pagination a.next span,
+div.pagination .disabled.next span {
+    transform: rotate(-90deg);
+    margin-left: 10px;
+    width: 15px;
+}
+div.pagination .disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+div.pagination div.pages {
+    display: flex;
+    align-items: center;
+}
+div.pagination div.pages span.active {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #5aab7b;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+div.pagination div.pages a {
+    color: #5e5e5e;
+    font-size: 18px;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+div.pagination div.pages a:hover {
+    background: #c9eee4;
+}
+
+
+footer img {
+    height: 50px !important;
+}
+footer ul.social-media li a {
+    font-size: 24px;
+}
+footer ul.links li a {
+    font-size: 18px;
+    height: 24px;
+}
+
+
+#home #spotlight {
+    min-height: calc(100vh - 92px);
+}
+#home #spotlight h1 {
+    font-size: 45px;
+    font-weight: 800;
+}
+#home p {
+    font-size: 18px;
+}
+#home #features h2 {
+    font-size: 38px;
+    font-weight: 700;
+}
+#home #features div.get-a-demo p {
+    max-width: 55%;
+}
+
+
+#profile {
+    height: calc(100vh - 92px);
+    margin-bottom: 0;
+}
+#profile img.profile_image {
+    width: 250px;
+    height: 250px;
+    filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+}
+#profile h5 {
+    font-weight: 300;
+}
+#analytics h3 {
+    font-size: 36px;
+}
+
+
+#auth div.container div.row div.col-12 img {
+    width: 100px;
+}
+#auth {
+    height: max-content;
+}
+#auth div.container div.row div.col-12 form textarea {
+    max-height: 122px;
+}
+#authentication-failed {
+    height: 100vh;
+}
+#authentication-failed div.container {
+    height: 70%;
+}
+#authentication-failed div.container h1 {
+    font-size: 45px;
+    font-weight: 800;
+}
+
+
+#add-event form input {
+    font-size: 21px;
+}
+#add-event form label {
+    font-size: 18px;
+}
+
+
+#my-events #filter form h5 {
+    font-size: 22px;
+    font-weight: 300;
+}
+#my-events #filter form div.form-group label {
+    font-size: 18px;
+}
+
+
+#event p {
+    font-size: 18px;
+}

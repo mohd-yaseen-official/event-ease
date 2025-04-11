@@ -1,0 +1,99 @@
+{% extends "base.html" %}      
+{% load static %}
+
+{% block 'content' %}
+
+    <section id="dashboard">
+
+        {% include "includes/header.html" %}
+
+        <section class="jumbotron d-flex flex-column align-items-center py-xl-5" id='profile'>
+            
+            {% if customer.profile_image %}
+                <img src='{{customer.profile_image.url}}' alt="{{customer.name}}" class="profile_image rounded-circle align-self-center mb-3">
+            {% else %}
+                <img src='{% static 'icons/user.svg' %}' alt="{{customer.name}}" class="profile_image rounded-circle align-self-center mb-3">
+            {% endif %}
+            
+            <h1 class='display-4 text-center'>{{customer.name}}</h1>
+            <h5 class='h3'>@{{customer.user.username}}</h5>
+            <h5>Email: {{customer.user.email}}</h5>
+          
+            <a href="{% url 'events:my_events' %}" class="btn btn-success mt-2 mt-lg-5 p-2">
+                Manage Events
+            </a>
+
+        </section>
+    
+        <section id="analytics" class='p-3 p-sm-5'>
+
+            <div class="analytics mb-5">
+
+                <h3 class='mb-4'>Analytics :-</h3>
+                
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-12 col-sm d-flex align-items-center flex-column mb-3 mb-sm-0 mr-sm-3 p-3 border border-secondary rounded bg-info">
+                            <h4 class='mb-4 text-capitalize font-weight-bold text-light'>Total Events</h4>
+                            <h5 class='display-4'>{{total_events}}</h5>
+                        </div>
+                        <div class="col-12 col-sm d-flex align-items-center flex-column mb-3 mb-sm-0 mr-sm-3 p-3 border border-secondary rounded bg-warning">
+                            <h4 class='mb-4 text-capitalize font-weight-bold '>Event in this Month</h4>
+                            <h5 class='display-4'>
+                                {% if months_events %}
+                                    {{months_events}}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            </h5>
+                        </div>
+                        <div class="col-12 col-sm d-flex align-items-center flex-column mb-3 mb-sm-0 p-3 border border-secondary rounded bg-success">
+                            <h4 class='mb-4 text-capitalize font-weight-bold text-light'>Today's Event</h4>
+                            <h5 class='display-4'>
+                                {% if todays_events %}
+                                    {{todays_events|length}}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            </h5>
+                        </div>
+                        
+                    </div> 
+                
+                </div>
+            </div>
+            
+            <div class="today-events">
+                <h3 class='mb-4'>Today's Events :-</h3>
+                <div class="container">
+                    <div class="row">
+                        {% if todays_events %}
+                            {% for event in todays_events %}
+                                <div class="col-12 col-lg-6 mb-3">
+                                    <div class="card border-dark rounded">
+                                        
+                                        <div class="card-body">
+
+                                            <h5 class="card-title">{{event.title}}</h5>
+                                            <p class="card-text">{{event.description}}</p>
+
+                                            <h6 class='text-muted'>Time: <i class='font-italic'>{{event.date_and_time.time}}</i></h6>
+                                            <h6 class='text-muted'>Venue: <i class='font-italic'>{{event.venue}}</i></h6>
+
+                                            <a href="{% url 'events:view_event' event.pk %}" class="btn btn-primary mt-2">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                                <h4 class='m-auto text-muted'>No Events Found for Today...</h4>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        {% include "includes/footer.html" %}
+    </section>
+{% endblock %}

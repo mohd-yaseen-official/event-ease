@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'content' %}
+
+    <section id='auth' class='bg-dark'>
+        {% include "includes/header.html" %}
+
+        <div class='container py-5'>
+            <h1 class='text-white text-center'>{{ title }}</h1>
+
+            <div class="row">
+                <div class="col-12 col-lg-5 container mt-3 mx-auto p-4 bg-white rounded">
+                    {% block authentication %}
+                    
+                    {% endblock authentication %}
+                </div>
+            </div>
+            
+        </div>
+        {% include "includes/footer.html" %}
+    </section>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+[
+{
+    "model": "web.feature",
+    "pk": 1,
+    "fields": {
+        "feature_image": "features/event1.jpeg",
+        "title": "Unlimited Event Selection",
+        "description": "Discover a seamless event planning experience with our platform, offering a wide range of event types to suit any occasion. From corporate conferences to casual meetups etc..."
+    }
+},
+{
+    "model": "web.feature",
+    "pk": 2,
+    "fields": {
+        "feature_image": "features/event3.jpeg",
+        "title": "Interactive Calendar Scheduling",
+        "description": "Effortlessly select dates and times for your events with our user-friendly calendar. Our interactive scheduling tool ensures you can plan with precision, making it simple to manage and organize your events seamlessly."
+    }
+},
+{
+    "model": "web.feature",
+    "pk": 3,
+    "fields": {
+        "feature_image": "features/event2.jpeg",
+        "title": "Advanced Event Filtering",
+        "description": "Find the perfect event effortlessly with our advanced filtering options. Easily sort events by type, allowing you to quickly locate exactly what you're looking for, whether it's a business conference, social gathering, workshop, or celebration."
+    }
+},
+{
+    "model": "web.feature",
+    "pk": 4,
+    "fields": {
+        "feature_image": "features/event4.jpeg",
+        "title": "On-Site Management",
+        "description": "Enjoy the convenience of managing your events directly on our website. With no need for additional storage space, our platform allows you to handle all your event planning needs online, ensuring a hassle-free experience from start to finish."
+    }
+}
+]

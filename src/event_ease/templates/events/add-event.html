@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'content' %}
+
+    <section id="add-event">
+
+        {% include "includes/header.html" %}
+
+        <div class="container py-5">
+
+            <h1 class='text-center'>Add Event</h1>
+
+            <form action="" method="post" class='ajax'>
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{field.id_for_label}}">{{field.label}}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            
+                <div class="form-group d-flex flex-column">
+                
+                    {% if message %}
+                        <p class="form-text text-center text-danger">{{ message }}</p>
+                    {% endif %}
+                    
+                    <button type="submit" class='btn btn-success'>Submit</button>
+        
+                </div>
+
+            </form>
+        </div>
+        
+        {% include "includes/footer.html" %}
+        
+    </section>
+{% endblock %}

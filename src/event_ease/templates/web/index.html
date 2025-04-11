@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'content' %}
+<section id="home">
+    {% include "includes/header.html" %}
+
+    <div class="container">
+        <section id="spotlight" class="row d-flex justify-content-center pt-4">
+            <div class="col-12 col-md-6 d-flex align-items-center">
+                <div>
+                    <h1 class="mb-3">Welcome to <em>EventEase</em>: Where Moments Blossom.</h1>
+                    <p>At EventEase, we turn ordinary occasions into extraordinary memories. Whether it’s a corporate gathering, a fairytale wedding, or a community celebration, our dedicated team ensures seamless experiences. From concept to execution, we weave magic into every detail, making your event truly special.</p>
+                    <a href="{% url 'web:dashboard' %}" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 d-flex justify-content-center">
+                <img src="{% static 'images/hero.png' %}" alt="EventEase hero image" class="img-fluid">
+            </div>
+        </section> 
+
+        <section id="features" class="row d-flex flex-column justify-content-center pb-3">
+            <div class="col-12">
+                <h2 class="mb-5 text-center">Our Unparalleled Features</h2>
+                <div class="row">
+                    {% for feature in features %}
+                        <div class="col-12 col-md-6 mb-4 d-flex align-items-stretch">
+                            <div class="feature jumbotron w-100">
+                                <img src="{{ feature.feature_image.url }}" alt="{{ feature.title }}" class="img-fluid rounded mb-3">
+                                <h3>{{ feature.title }}</h3>
+                                <p>{{ feature.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>     
+            </div>
+            <div class="get-a-demo col-12 text-center mt-4">
+                <h2>Get a Free Demo</h2>
+                <p class="mx-auto">Ready to embark on your next event? Try our demo to see how our platform can help you create an unforgettable experience.</p>
+                <a href="{% url 'web:dashboard' %}" class="btn btn-primary">Schedule a Demo</a>
+            </div>
+        </section>
+    </div>
+
+    {% include "includes/footer.html" %}
+</section>
+{% endblock %}
