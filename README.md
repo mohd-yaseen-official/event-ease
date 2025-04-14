@@ -28,20 +28,23 @@
 ## 📁 Project Structure
 
 ```
-EventEase/
-├── authentication/
-├── events/
-├── main/
-├── web/
-│   └── fixtures/
-│       └── features.json
-├── templates/
-├── static/
-├── media/
-├── event_ease/
-│   └── settings.py
-├── manage.py
-├── requirements.txt
+event-ease/
+├── venv/
+├── src/
+│    ├── event-ease/
+|          ├── authentication/
+|          ├── events/
+|          ├── main/
+|          ├── web/
+|          │   └── fixtures/
+|          │       └── features.json
+|          ├── templates/
+|          ├── static/
+|          ├── media/
+|          ├── event_ease/
+|          │   └── settings.py
+|          ├── manage.py
+|          ├── requirements.txt
 └── README.md
 ```
 
@@ -53,7 +56,7 @@ EventEase/
 
 ```bash
 git clone https://github.com/mohd-yaseen-official/event-ease.git
-cd EventEase
+cd event-ease
 ```
 
 ### 2. Create and activate a virtual environment
@@ -75,12 +78,12 @@ pip install -r requirements.txt
 
 ```env
 DJANGO_SECRET_KEY=your-secret-key
-DJANGO_DEBUG=True
-DB_NAME=event_ease
-DB_USER=postgres
-DB_PASSWORD=admin
-DB_HOST=localhost
-DB_PORT=5432
+DJANGO_DEBUG=True-or-False
+DB_NAME=your-db-name
+DB_USER=your-db-username
+DB_PASSWORD=your-db-password
+DB_HOST=your-db-host
+DB_PORT=your-db-port
 ```
 
 ### 5. Run database migrations
